@@ -4,6 +4,10 @@ import os
 DEFAULT_KNOWLEDGE_BASE = "samples"
 
 # 默认向量库/全文检索引擎类型。可选：faiss, milvus(离线) & zilliz(在线), pgvector,全文检索引擎es
+# 如果选择milvus，则需要安装pymilvus模块
+# 并且milvus服务需要启动
+# 并且milvus版本需要和服务器一样
+# 例如：pip install pymilvus==2.2.17
 DEFAULT_VS_TYPE = "faiss"
 
 # 缓存向量库数量（针对FAISS）
@@ -66,6 +70,10 @@ if not os.path.exists(KB_ROOT_PATH):
     os.mkdir(KB_ROOT_PATH)
 # 数据库默认存储路径。
 # 如果使用sqlite，可以直接修改DB_ROOT_PATH；如果使用其它数据库，请直接修改SQLALCHEMY_DATABASE_URI。
+# 如果选择mysql, 则需要安装pymysql模块
+# pip install pymysql
+# 下面是一个简单mysql连接参考
+# SQLALCHEMY_DATABASE_URI = "mysql+pymysql://localhost:3306/langchain?user=root&password=xxxxxx&charset=utf8mb4"
 DB_ROOT_PATH = os.path.join(KB_ROOT_PATH, "info.db")
 SQLALCHEMY_DATABASE_URI = f"sqlite:///{DB_ROOT_PATH}"
 

@@ -18,7 +18,9 @@ EMBEDDING_MODEL_OUTPUT_PATH = "output"
 
 # 要运行的 LLM 名称，可以包括本地模型和在线模型。
 # 第一个将作为 API 和 WEBUI 的默认模型
-LLM_MODELS = ["chatglm2-6b", "zhipu-api", "openai-api"]
+# LLM_MODELS = ["chatglm2-6b", "zhipu-api", "openai-api"]
+# LLM_MODELS = ["qwen-trt-llm", "zhipu-api", "openai-api"]
+LLM_MODELS = ["qwen-trt-llm"]
 
 # AgentLM模型的名称 (可以不指定，指定之后就锁定进入Agent之后的Chain的模型，不指定就是LLM_MODELS[0])
 Agent_MODEL = None
@@ -38,6 +40,12 @@ TEMPERATURE = 0.7
 
 ONLINE_LLM_MODEL = {
     # 线上模型。请在server_config中为每个在线API设置不同的端口
+    "qwen-trt-llm": {
+        "api_base_url": "http://127.0.0.1:5540/v1",
+        "api_key": "no key",
+        "version": "qwen-trt-llm",  # 可选包括 "chatglm_turbo"
+        "provider": "QwenTRTLLMWorker",
+    },
 
     "openai-api": {
         "model_name": "gpt-3.5-turbo",
@@ -270,4 +278,5 @@ SUPPORT_AGENT_MODEL = [
     "agentlm",
     "chatglm3",
     "xinghuo-api",
+    "qwen-trt-llm",
 ]

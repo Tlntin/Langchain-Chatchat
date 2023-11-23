@@ -121,7 +121,7 @@ FSCHAT_MODEL_WORKERS = {
         "port": 21008,
     },
     "qwen-trt-llm": {
-        "port": 21006,
+        "port": 21009,
     },
 }
 
